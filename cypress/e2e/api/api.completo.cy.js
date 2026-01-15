@@ -1,13 +1,11 @@
 describe('Automação de API - Cobertura Completa da Documentação', () => {
-  // ATENÇÃO: Confirme a porta do backend. Geralmente é 3001 ou 3000.
   const baseUrl = 'http://localhost:8400'
   
-  // Variáveis para guardar os IDs criados e usar nos testes de Edição/Deleção
   let userId;
   let companyId;
 
-  // --- ROTA HOME ---
-  it('HOME - Deve retornar mensagem de home (GET /)', () => {
+
+  it('GET - Home)', () => {
     cy.request({
       method: 'GET',
       url: `${baseUrl}/`,
@@ -21,25 +19,25 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
   // --- ROTAS DE USUÁRIO (USER) ---
   context('Endpoints de Usuário (/api/user)', () => {
     
-    it('CRIAR - Deve criar um usuário (POST /api/user/create)', () => {
+    it('POST - Criar um usuário (POST /api/user/create)', () => {
       cy.request({
         method: 'POST',
-        url: `${baseUrl}/api/user/create`, // Seguindo a doc
+        url: `${baseUrl}/api/user/create`,
         failOnStatusCode: false,
         body: {
           "name": "Beatriz QA",
-          "e-mail": "beatriz@qa.com", // Doc pede "e-mail" (com traço)
+          "e-mail": "beatriz@qa.com",
           "companies": ["Empresa Teste"]
         }
       }).then((response) => {
-        // Se der 404 ou 405, é bug (rota não existe ou método proibido)
+
         expect(response.status).to.eq(201)
-        // Salva o ID para os próximos testes
+     
         if (response.body.id) userId = response.body.id
       })
     })
 
-    it('LISTAR - Deve retornar todos usuários (GET /api/user)', () => {
+    it('GET - Deve retornar todos usuários', () => {
       cy.request({
         method: 'GET',
         url: `${baseUrl}/api/user`,
@@ -50,8 +48,8 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       })
     })
 
-    it('BUSCAR POR ID - Deve retornar usuário específico (GET /api/user/{id})', () => {
-      // Só roda se tiver criado o usuário antes
+    it('GET - Deve retornar usuário por id', () => {
+
       if (userId) {
         cy.request({
           method: 'GET',
@@ -66,7 +64,7 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       }
     })
 
-    it('ATUALIZAR - Deve editar usuário (PATCH /api/user/{id}/update)', () => {
+    it('PATCH - Editar usuário', () => {
       if (userId) {
         cy.request({
           method: 'PATCH',
@@ -84,11 +82,11 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       }
     })
 
-    it('DELETAR - Deve remover usuário (DELETE /api/user/{id}/delete)', () => {
+    it('DELETE - Deve remover usuário', () => {
       if (userId) {
         cy.request({
           method: 'DELETE',
-          url: `${baseUrl}/api/user/${userId}/delete`, // Seguindo a doc
+          url: `${baseUrl}/api/user/${userId}/delete`,
           failOnStatusCode: false
         }).then((response) => {
           expect(response.status).to.eq(200)
@@ -97,7 +95,7 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
     })
   })
 
-  // --- ROTAS DE EMPRESA (COMPANY) ---
+
   context('Endpoints de Empresa (/api/company)', () => {
 
     it('CRIAR - Deve criar uma empresa (POST /api/company/create)', () => {
@@ -108,11 +106,11 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
         body: {
           "name": "Empresa QA Ltda",
           "cnpj": "00.000.000/0001-00",
-          "adress": { // Doc escreve "adress" com um D só (Erro de inglês na doc)
+          "adress": { 
              "cep": "90000-000",
              "country": "Brasil",
              "city": "Porto Alegre",
-             "street_location": "Rua Fantasma", // Doc pede street_location
+             "street_location": "Rua Fantasma", 
              "number": "0",
              "district": "Centro"
           }
@@ -123,7 +121,7 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       })
     })
 
-    it('LISTAR - Deve retornar todas empresas (GET /api/company)', () => {
+    it('GET - Deve retornar todas empresas', () => {
       cy.request({
         method: 'GET',
         url: `${baseUrl}/api/company`,
@@ -133,7 +131,7 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       })
     })
 
-    it('BUSCAR POR ID - Deve retornar empresa específica (GET /api/company/{id})', () => {
+    it('GET - Deve retornar empresa por Id', () => {
       if (companyId) {
         cy.request({
           method: 'GET',
@@ -145,7 +143,7 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       }
     })
 
-    it('ATUALIZAR - Deve editar empresa (PATCH /api/company/{id}/update)', () => {
+    it('PATCH - Deve editar empresa', () => {
       if (companyId) {
         cy.request({
           method: 'PATCH',
@@ -157,9 +155,9 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
             "adress": {
                "cep": "91000-000",
                "country": "Brasil",
-               "state": "RS", // Doc pede "state" aqui (não tinha no create)
+               "state": "RS", 
                "city": "Canoas",
-               "street": "Rua Nova", // Doc pede "street" (antes era street_location)
+               "street": "Rua Nova",
                "number": "10",
                "district": "Bairro Novo"
             }
