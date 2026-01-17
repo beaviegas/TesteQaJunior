@@ -6,7 +6,7 @@ describe('Interface da Listagem de Usuários', () => {
 
   it('Deve validar a estrutura da Tabela e Colunas obrigatórias', () => {
 
-    const colunasEsperadas = ['Nome', 'Email', 'Cidade', 'Ações'] 
+    const colunasEsperadas = ['Nome', 'Email', 'Telefone', 'Nascimento', 'Cidade', 'Empresa'] 
     cy.validarCabecalhosTabela(colunasEsperadas)
   })
 

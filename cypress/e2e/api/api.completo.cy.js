@@ -68,7 +68,7 @@ describe('Automação de API - Cobertura Completa da Documentação', () => {
       if (userId) {
         cy.request({
           method: 'PATCH',
-          url: `${baseUrl}/api/user/${userId}/update`, // Seguindo a doc
+          url: `${baseUrl}/api/user/${userId}/update`,
           failOnStatusCode: false,
           body: {
             "name": "Beatriz Editada",

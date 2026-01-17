@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "cypress": "^15.9.0"
+    "@faker-js/faker": "^10.2.0",
+    "cypress": "^15.9.0",
+    "cypress-mochawesome-reporter": "^4.0.2"
   }
 }
