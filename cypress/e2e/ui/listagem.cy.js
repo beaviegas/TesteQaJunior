@@ -4,13 +4,13 @@ describe('Interface da Listagem de Usuários', () => {
     cy.acessarHome()
   })
 
-  it('Deve validar a estrutura da Tabela e Colunas obrigatórias', () => {
+  it('Validação da estrutura da Tabela e Colunas obrigatórias', () => {
 
     const colunasEsperadas = ['Nome', 'Email', 'Telefone', 'Nascimento', 'Cidade', 'Empresa'] 
     cy.validarCabecalhosTabela(colunasEsperadas)
   })
 
-  it('Deve verificar se a listagem carregou sem erros de servidor', () => {
+  it('Validação se a listagem carregou sem erros de servidor', () => {
 
     cy.validarPaginaSemErros()
   })
