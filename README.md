@@ -6,7 +6,7 @@ Este projeto consiste na automação de testes "End-to-End" para Teste técnico 
 
 Todo o planejamento estratégico, incluindo o Plano de Testes detalhado e o Relatório de Bugs (com os impedimentos técnicos encontrados na API), está documentado no Notion:
 
-**[CLIQUE AQUI PARA ACESSAR O PLANO DE TESTE E REPORT DE BUGS (NOTION)](COLOQUE_SEU_LINK_DO_NOTION_AQUI)**
+**[CLIQUE AQUI PARA ACESSAR O PLANO DE TESTE E REPORT DE BUGS (NOTION)](https://strong-roundworm-303.notion.site/Teste-t-cnico-QA-J-nior-Beatriz-Soares-Viegas-2e932cd132cc8035bee7d65928ef0f2b?source=copy_link)**
 
 ---
 
