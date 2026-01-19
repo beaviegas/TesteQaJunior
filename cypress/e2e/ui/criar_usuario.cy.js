@@ -110,7 +110,7 @@ describe('Funcionalidade: Cadastro de Usuário', () => {
     cy.contains('button', 'Salvar').should('be.visible')
   })
 
-  it('Validação de campos obrigatórios: Tentar salvar com Data de Nascimento vazia', () => {
+  it('Validação de campos obrigatórios: campo Data de Nascimento', () => {
     cy.abrirModalCadastro()
 
     const usuarioSemData = {
