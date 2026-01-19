@@ -44,12 +44,15 @@ Para rodar TODOS os testes (Front e API) em segundo plano e gerar o relatório f
 Apenas API:
 
 `npx cypress run --spec "cypress/e2e/api/**/*"`
+
 Relatórios e Evidências
 Um relatório da última execução foi versionado neste repositório. Em caso de falhas ou execução bem-sucedida, as evidências são salvas automaticamente em:
 
 cypress/relatorios/ 
 
 cypress/screenshots/ (Prints automáticos em caso de erro)
+
+Mas para executar o um novo relatório, basta executar `npx cypress run --spec "cypress/e2e"` que gerará um novo relatório html em cypress/relatorios/
 
 ### Escopo dos Testes
  Front-end (Interface)
